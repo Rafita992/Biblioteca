@@ -11,6 +11,11 @@ class Usuario{
         return $resultado->fetch_assoc();
     }
 
+    public function getById($id){
+    $resultado = $this->conexion->query("SELECT * FROM usuarios WHERE id = $id");
+    return $resultado->fetch_assoc();
+}
+
     public function getAll(){
     $resultado = $this->conexion->query("SELECT * FROM usuarios");
     $usuarios = [];
