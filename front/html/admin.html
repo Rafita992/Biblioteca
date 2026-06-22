@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Panel de Administración</h1>
+    <button id="btn-logout">Cerrar Sesión</button>
+    <h2>Usuarios</h2>
+    <button id="btn-add-usuario">Añadir usuario</button>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-usuarios"></tbody>
+    </table>
+
+    <h2>Libros</h2>
+    <button id="btn-add-libro">Añadir libro</button>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-libros"></tbody>
+    </table>
+
+    <h2>Reservas</h2>
+    <button id="btn-add-reserva">Añadir reserva</button>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuario ID</th>
+                <th>Libro ID</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-reservas"></tbody>
+    </table>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
