@@ -77,6 +77,14 @@ input, select {
     font-size: 14px;
 }
 
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+}
+
 #mensaje-error {
     color: red;
     margin-top: 10px;
@@ -94,4 +102,21 @@ input, select {
 
 #btn-logout:hover {
     background-color: #c0392b;
+}
+
+/* Login centrado */
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.login-container form {
+    width: 350px;
+}
+
+.login-container h1 {
+    margin-bottom: 20px;
 }
