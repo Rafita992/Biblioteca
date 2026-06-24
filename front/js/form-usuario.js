@@ -11,7 +11,7 @@ const params = new URLSearchParams(window.location.search)
 const id = params.get("id")
 
 if(id) {
-    tituloForm.textContent = "Editar usuario"
+    tituloForm.textContent = "Editar Usuario"
     fetch("../../back/web_services/usuarios_ws.php?id=" + id)
     .then(function(respuesta) {
         return respuesta.json()
@@ -23,7 +23,7 @@ if(id) {
         usuarioId.value = usuario.id
     })
 } else {
-    tituloForm.textContent = "Añadir usuario"
+    tituloForm.textContent = "Añadir Usuario"
 }
 
 form.addEventListener("submit", function(evento) {
@@ -55,7 +55,9 @@ form.addEventListener("submit", function(evento) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(datos)
         })
-        .then(function(respuesta) { return respuesta.json() })
+        .then(function(respuesta) {
+             return respuesta.json() 
+            })
         .then(function(resultado) {
             if(resultado.success) {
                 window.location.href = "admin.html"

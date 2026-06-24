@@ -9,10 +9,14 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 
 if($method === 'GET'){
-    $usuarios = $usuarioModel->getAll();
-    echo json_encode($usuarios);
-
-
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        $usuario = $usuarioModel->getById($id);
+        echo json_encode($usuario);
+    } else {
+        $usuarios = $usuarioModel->getAll();
+        echo json_encode($usuarios);
+    }
 } elseif($method === 'POST'){
     $datos = json_decode(file_get_contents('php://input'), true);
     $nombre = $datos['nombre'];

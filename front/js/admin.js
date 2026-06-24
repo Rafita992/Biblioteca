@@ -108,6 +108,13 @@ function editarUsuario(id) {
     window.location.href = "form-usuario.html?id=" + id
 }
 
+function editarLibro(id){
+    window.location.href = "form-libro.html?id=" + id
+}
+
+function editarReserva(id){
+    window.location.href = "form-reserva.html?id=" + id
+}
 function borrarUsuario(id) {
     if(confirm("¿Seguro que quieres borrar este usuario?")) {
         fetch("../../back/web_services/usuarios_ws.php", {
@@ -121,6 +128,41 @@ function borrarUsuario(id) {
         .then(function(resultado) {
             if(resultado.success) {
                 cargarUsuarios()
+            }
+        })
+    }
+}
+
+function borrarLibro(id){
+    if(confirm("¿Seguro que quieres borrar este libro?")){
+        fetch("../../back/web_services/libros_ws.php", {
+            method : "DELETE",
+            headers : {"Content-Type": "application/json"},
+            body : JSON.stringify({id: id})
+        })
+        .then(function(respuesta){
+            return respuesta.json()
+        })
+        .then(function(resultado){
+            if(resultado.success === true){
+                cargarLibros()
+            }
+        })()
+    }
+}
+function borrarReserva(id){
+    if(confirm("¿Seguro que quieres borrar este libro?")){
+        fetch("../../back/web_services/reservas_ws.php", {
+            method: "DELETE",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({id: id})
+        })
+        .then(function(respuesta){
+            return respuesta.json()
+        })
+        .then(function(resultado){
+            if(resultado.success === true){
+                cargarReservas()
             }
         })
     }

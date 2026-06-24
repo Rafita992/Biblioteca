@@ -9,15 +9,19 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 
 if($method === 'GET'){
-    $reservas = $reservaModel->getAll();
-    echo json_encode($reservas);
-
-
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        $reserva = $reservaModel -> getById($id);
+        echo json_encode($reserva);
+    } else {
+        $reservas = $reservaModel -> getAll();
+        echo json_encode($reservas);
+    }
 } elseif($method === 'POST'){
     $datos = json_decode(file_get_contents('php://input'), true);
     $usuario_id = $datos['usuario_id'];
     $libro_id = $datos['libro_id'];
-    $fecha = $datos['fecha'];
+    $fecha = $datos['fecha'];   
 
     $resultado = $reservaModel->create($usuario_id, $libro_id, $fecha);
 

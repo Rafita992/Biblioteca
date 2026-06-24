@@ -15,6 +15,11 @@ class Libro{
         return $libros;
     }
 
+    public function getById($id){
+        $resultado = $this -> conexion -> query("Select * FROM libros WHERE id = $id");
+        return $resultado -> fetch_assoc();
+    }
+
     public function create($titulo, $autor){
         $resultado = $this->conexion->query("INSERT INTO libros (titulo, autor, disponible) VALUES ('$titulo', '$autor', 1)");
         return $resultado;
@@ -22,6 +27,11 @@ class Libro{
 
     public function update($id, $titulo, $autor, $disponible){
         $resultado = $this->conexion->query("UPDATE libros SET titulo='$titulo', autor='$autor', disponible='$disponible' WHERE id=$id");
+        return $resultado;
+    }
+
+    public function updateDisponible($id, $disponible){
+        $resultado = $this->conexion->query("UPDATE libros SET disponible='$disponible' WHERE id=$id");
         return $resultado;
     }
 

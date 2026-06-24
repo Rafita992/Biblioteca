@@ -7,12 +7,16 @@ require_once '../models/Libro.php';
 $libroModel = new Libro($conexion);
 $method = $_SERVER['REQUEST_METHOD'];
 
-// GET → listar todos los libros
 if($method === 'GET'){
-    $libros = $libroModel->getAll();
-    echo json_encode($libros);
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+        $libro = $libroModel -> getById($id);
+        echo json_encode($libro);
+    } else {
+        $libros = $libroModel -> getAll();
+        echo json_encode($libros);
+    }
 
-// POST → crear libro nuevo
 } elseif($method === 'POST'){
     $datos = json_decode(file_get_contents('php://input'), true);
     $titulo = $datos['titulo'];
@@ -26,23 +30,26 @@ if($method === 'GET'){
         echo json_encode(["success" => false, "mensaje" => "Error al crear el libro"]);
     }
 
-// PUT → editar libro
 } elseif($method === 'PUT'){
     $datos = json_decode(file_get_contents('php://input'), true);
     $id = $datos['id'];
-    $titulo = $datos['titulo'];
-    $autor = $datos['autor'];
-    $disponible = $datos['disponible'];
-
-    $resultado = $libroModel->update($id, $titulo, $autor, $disponible);
-
+    
+    if(isset($datos['titulo'])){
+        $titulo = $datos['titulo'];
+        $autor = $datos['autor'];
+        $disponible = $datos['disponible'];
+        $resultado = $libroModel->update($id, $titulo, $autor, $disponible);
+    } else {
+        $disponible = $datos['disponible'];
+        $resultado = $libroModel->updateDisponible($id, $disponible);
+    }
+    
     if($resultado){
         echo json_encode(["success" => true, "mensaje" => "Libro actualizado correctamente"]);
     } else {
         echo json_encode(["success" => false, "mensaje" => "Error al actualizar el libro"]);
     }
 
-// DELETE → borrar libro
 } elseif($method === 'DELETE'){
     $datos = json_decode(file_get_contents('php://input'), true);
     $id = $datos['id'];

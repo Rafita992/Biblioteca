@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Reserva</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <h1 id="titulo-form">Añadir Reserva</h1>
+    <form id="form-reserva">
+        <input type="hidden" id="reserva-id">
+        <input type="number" id="reserva-usuario-id" placeholder="ID Usuario" required>
+        <input type="number" id="reserva-libro-id" placeholder="ID libro" required>
+        <input type="date" id="reserva-fecha" required>
+        <button type="submit">Guardar</button>
+        <button type="button" id="btn-cancelar">Cancelar</button>
+    </form>
+    <script src="../js/form-reserva.js"></script>
+</body>
+</html>

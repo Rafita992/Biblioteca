@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Usuario</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <h1>Panel de Usuario</h1>
+    <button id="btn-logout">Cerrar Sesión</button>
+    <p id="bienvenida"></p>
+    <h2>Libros disponibles</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-libros-disponibles"></tbody>
+    </table>
+    <h2>Mis reservas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Libro ID</th>
+                <th>Fecha</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="tbody-mis-reservas"></tbody>
+    </table>
+    <script src="../js/panel.js"></script>
+</body>
+</html>

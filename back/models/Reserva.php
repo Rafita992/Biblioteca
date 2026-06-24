@@ -15,6 +15,11 @@ class Reserva{
         return $reservas;
     }
 
+    public function getById($id){
+        $resultado = $this -> conexion -> query("SELECT * FROM reservas WHERE id = $id");
+        return $resultado -> fetch_assoc();
+    }
+
     public function create($usuario_id, $libro_id, $fecha){
         $resultado = $this->conexion->query("INSERT INTO reservas (usuario_id, libro_id, fecha) VALUES ('$usuario_id', '$libro_id', '$fecha')");
         return $resultado;
